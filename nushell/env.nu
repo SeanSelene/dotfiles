@@ -19,7 +19,7 @@ $env.IS_NU = "1"
 
 # fnm
 if (executable fnm) {
-  load-env (fnm env --json | from json)
+  fnm env --json | from json | load-env
   let list = $env.PATH | split row (char esep)
   if $is_win {
     $env.PATH = $list | append $env.FNM_MULTISHELL_PATH
@@ -29,14 +29,19 @@ if (executable fnm) {
   $env.FNM_NODE_DIST_MIRROR = "https://mirrors.ustc.edu.cn/node/"
 }
 
+
 # rust
-if not $is_win {
-  $env.PATH = $env.PATH | split row ':' | prepend "/usr/local/bin/"
-  let rust_bin_path = $'($env.HOME)/.cargo/bin'
-  if ($rust_bin_path | path exists) {
-    $env.PATH = $env.PATH | split row ':' | append $rust_bin_path
-  }
+if ($"($nu.home-path)/.cargo/env.nu" | path exists) {
+  source $"($nu.home-path)/.cargo/env.nu"
 }
+
+# bun
+if ($"($nu.home-path)/.bun/_bun" | path exists) {
+    let bun_path = $"($nu.home-path)/.bun/bin"
+    let list = $env.PATH | split row (char esep)
+    $env.PATH = $list | append $bun_path
+}
+
 
 # starship
 if (executable starship) {
