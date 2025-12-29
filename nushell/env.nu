@@ -31,8 +31,8 @@ if (executable fnm) {
 
 
 # rust
-if ($"($nu.home-path)/.cargo/env.nu" | path exists) {
-  source $"($nu.home-path)/.cargo/env.nu"
+if ($"($nu.home-path)/.cargo/bin" not-in ($env.PATH | split row (char esep))) {
+    $env.PATH = ($env.PATH | prepend $"($nu.home-path)/.cargo/bin")
 }
 
 # bun
