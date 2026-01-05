@@ -9,6 +9,18 @@ def executable [cmd: string] {
   (which $cmd | length) > 0
 }
 
+def scoop-app-dir [app: string]: nothing -> string {
+    let app_list = which $app
+    if not ($app_list | is-empty) {
+      let app_path = $app_list.0.path
+      if $app_path =~ "shims" {
+        $app_path | str replace -r "shims.*$" $"apps\\($app)\\current\\"
+      } else {
+          ""
+      }
+    }
+}
+
 let host_name = (sys host).name
 let is_linux = $host_name =~ "Linux"
 let is_wsl = $is_linux and ((sys host).kernel_version =~ "WSL")
@@ -42,6 +54,15 @@ if ($"($nu.home-path)/.bun/_bun" | path exists) {
     $env.PATH = $list | append $bun_path
 }
 
+# claude code
+if ($is_win and ('~/.local/bin' | path exists)) {
+    $env.PATH = ($env.PATH | prepend ~/.local/bin)
+    let git_path = scoop-app-dir git
+    if not ($git_path | is-empty) {
+        $env.CLAUDE_CODE_GIT_BASH_PATH = $"($git_path)bin\\bash.exe"
+    }
+}
+
 
 # starship
 if (executable starship) {
@@ -49,15 +70,10 @@ if (executable starship) {
   starship init nu | save -f ~/.cache/starship/init.nu
 }
 
+# yazi
 if $is_win and (executable yazi) {
-  let git_list = which git
-  if not ($git_list | is-empty) {
-    let git_path = $git_list.0.path
-    if $git_path =~ "shims" {
-     # git installed by scoop
-      $env.YAZI_FILE_ONE = $git_path | str replace -r "shims.*$" "apps\\git\\current\\usr\\bin\\file.exe"
-    } else {
-      # other
-    }
+  let git_path = scoop-app-dir git
+  if not ($git_path | is-empty) {
+      $env.YAZI_FILE_ONE = $"($git_path)usr\\bin\\file.exe"
   }
 }
