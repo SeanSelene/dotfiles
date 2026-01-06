@@ -4,9 +4,13 @@ local wezterm = require("wezterm")
 local mux = wezterm.mux
 
 wezterm.on("gui-startup", function(cmd)
-  wezterm.sleep_ms(100)
+  local _, _, window = mux.spawn_window(cmd or {})
+  if wezterm.target_triple:find("linux") then
+    wezterm.sleep_ms(100)
+  end
   window:gui_window():maximize()
 end)
+
 
 wezterm.on("update-right-status", function(window)
   local date = wezterm.strftime("%Y-%m-%d %H:%M:%S")
