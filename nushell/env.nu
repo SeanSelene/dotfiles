@@ -48,7 +48,7 @@ if ($"($nu.home-path)/.cargo/bin" not-in ($env.PATH | split row (char esep))) {
 }
 
 # bun
-if ($"($nu.home-path)/.bun/_bun" | path exists) {
+if ($"($nu.home-path)/.bun/bin" | path exists) {
     let bun_path = $"($nu.home-path)/.bun/bin"
     let list = $env.PATH | split row (char esep)
     $env.PATH = $list | append $bun_path
