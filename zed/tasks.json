@@ -19,4 +19,9 @@
     },
     "command": "im-select 1033",
   },
+  {
+    "label": "switch keylayout to us(linux)",
+    "reveal": "never",
+    "command": "fcitx5-remote -s keyboard-us",
+  },
 ]
