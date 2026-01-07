@@ -1,3 +1,6 @@
+.DS_Store
+
 nushell/history.txt
 nvim/lazy-lock.json
 nvim/lazyvim.json
+zed/prompts/

@@ -1,0 +1,22 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+[
+  {
+    "label": "lazygit",
+    "command": "lazygit",
+    "reveal": "never",
+    "reveal_target": "center",
+  },
+  {
+    "label": "switch keylayout to us(mac)",
+    "reveal": "never",
+    "command": "macism com.apple.keylayout.US",
+  },
+  {
+    "label": "switch keylayout to us(win)",
+    "reveal": "never",
+    "shell": {
+      "program": "cmd",
+    },
+    "command": "im-select 1033",
+  },
+]

@@ -1,0 +1,141 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile", // 新建文件
+      "space e": "workspace::ToggleLeftDock", // 显示/隐藏左侧
+      "r": "project_panel::Rename", // 更改名字
+      "l": "project_panel::OpenPermanent", // 展开收缩文件夹 or 打开文件
+    },
+  },
+  // ============ ⌨️: vim 模式下的快捷键 start==============
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space e": "project_panel::ToggleFocus", // 聚焦到左侧面板
+      "space f f": "file_finder::Toggle", // 查找文件
+      "space space": "file_finder::Toggle", // 查找文件
+      "space s s": "outline::Toggle", // 查找 symbols
+      "\\ f": "editor::Format", // 格式化
+      "\\ r": "editor::Rename", // 重命名
+    },
+  },
+  // visual 模式
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      // 复制 kebab 格式
+      "\\ q": [
+        "action::Sequence",
+        [
+          "editor::ConvertToKebabCase",
+          ["workspace::SendKeystrokes", "y i w escape u e"],
+        ],
+      ],
+      // 复制 camel 格式
+      "\\ w": [
+        "action::Sequence",
+        [
+          "editor::ConvertToLowerCamelCase",
+          ["workspace::SendKeystrokes", "y i w escape u e"],
+        ],
+      ],
+      // 复制 Pascal 格式
+      "\\ e": [
+        "action::Sequence",
+        [
+          "editor::ConvertToUpperCamelCase",
+          ["workspace::SendKeystrokes", "y i w escape u e"],
+        ],
+      ],
+      // 复制 snake 格式
+      "\\ r": [
+        "action::Sequence",
+        [
+          "editor::ConvertToSnakeCase",
+          ["workspace::SendKeystrokes", "y i w escape u e"],
+        ],
+      ],
+    },
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-i": "editor::ShowCompletions", // 唤起补全
+    },
+  },
+  {
+    "context": "os==macos && vim_mode == insert",
+    "bindings": {
+      "escape": [
+        "action::Sequence",
+        [
+          "vim::NormalBefore",
+          ["task::Spawn", { "task_name": "switch keylayout to us(mac)" }],
+        ],
+      ],
+    },
+  },
+  {
+    "context": "os==windows && vim_mode == insert",
+    "bindings": {
+      "escape": [
+        "action::Sequence",
+        [
+          ["task::Spawn", { "task_name": "switch keylayout to us(win)" }],
+          "vim::NormalBefore",
+        ],
+      ],
+    },
+  },
+  {
+    "context": "KeymapEditor || vim_mode == normal",
+    // 在两个  pane  之间切换 (ctrl + tab)
+    "bindings": {
+      "space b d": "pane::CloseActiveItem", // 关闭激活的文件
+      "space b l": "pane::CloseItemsToTheLeft", // 关闭左侧
+      "space b r": "pane::CloseItemsToTheRight", // 关闭右侧
+      "space b o": "pane::CloseOtherItems", // 关闭其他
+      "space b b": [
+        "action::Sequence",
+        ["tab_switcher::Toggle", ["workspace::SendKeystrokes", "enter"]],
+      ],
+      "space g g": ["task::Spawn", { "task_name": "lazygit" }],
+    },
+  },
+  // visual 模式
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "p": ["workspace::SendKeystrokes", "\" _ d P"], // 解决剪切板被覆盖的问题
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "/": ["vim::Search", { "regex": false }],
+      "space q q": "workspace::CloseWindow",
+    },
+  },
+  // ============ ⌨️: vim 模式下的快捷键 end==============
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-h": "pane::ActivatePreviousItem", // 激活左侧
+      "alt-l": "pane::ActivateNextItem", // 激活右侧
+    },
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCompletionInsert",
+    },
+  },
+]
