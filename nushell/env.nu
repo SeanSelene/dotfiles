@@ -1,10 +1,3 @@
-$env.ENV_CONVERSIONS = {
-    "PATH": {
-        from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-        to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-    }
-}
-
 def executable [cmd: string] {
   (which $cmd | length) > 0
 }
@@ -52,6 +45,12 @@ if ($"($nu.home-path)/.bun/bin" | path exists) {
     let bun_path = $"($nu.home-path)/.bun/bin"
     let list = $env.PATH | split row (char esep)
     $env.PATH = $list | append $bun_path
+}
+
+# /usr/local/bin
+if ("/usr/local/bin" | path exists) {
+    let list = $env.PATH | split row (char esep)
+    $env.PATH = $list | append "/usr/local/bin"
 }
 
 # claude code
