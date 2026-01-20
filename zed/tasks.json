@@ -9,6 +9,7 @@
   {
     "label": "switch keylayout to us(mac)",
     "reveal": "never",
+    "hide": "on_success",
     "command": "macism com.apple.keylayout.US",
   },
   {
@@ -17,11 +18,13 @@
     "shell": {
       "program": "cmd",
     },
+    "hide": "on_success",
     "command": "im-select 1033",
   },
   {
     "label": "switch keylayout to us(linux)",
     "reveal": "never",
+    "hide": "on_success",
     "command": "fcitx5-remote -s keyboard-us",
   },
 ]
