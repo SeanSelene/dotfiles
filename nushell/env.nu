@@ -36,13 +36,13 @@ if (executable fnm) {
 
 
 # rust
-if ($"($nu.home-path)/.cargo/bin" not-in ($env.PATH | split row (char esep))) {
-    $env.PATH = ($env.PATH | prepend $"($nu.home-path)/.cargo/bin")
+if ($"($nu.home-dir)/.cargo/bin" not-in ($env.PATH | split row (char esep))) {
+    $env.PATH = ($env.PATH | prepend $"($nu.home-dir)/.cargo/bin")
 }
 
 # bun
-if ($"($nu.home-path)/.bun/bin" | path exists) {
-    let bun_path = $"($nu.home-path)/.bun/bin"
+if ($"($nu.home-dir)/.bun/bin" | path exists) {
+    let bun_path = $"($nu.home-dir)/.bun/bin"
     let list = $env.PATH | split row (char esep)
     $env.PATH = $list | append $bun_path
 }

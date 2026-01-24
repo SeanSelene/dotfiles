@@ -7,8 +7,8 @@ wezterm.on("gui-startup", function(cmd)
   local _, _, window = mux.spawn_window(cmd or {})
   if wezterm.target_triple:find("linux") then
     wezterm.sleep_ms(100)
+    window:gui_window():maximize()
   end
-  window:gui_window():maximize()
 end)
 
 
