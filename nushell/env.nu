@@ -37,25 +37,27 @@ if (executable fnm) {
 
 # rust
 if ($"($nu.home-dir)/.cargo/bin" not-in ($env.PATH | split row (char esep))) {
-    $env.PATH = ($env.PATH | prepend $"($nu.home-dir)/.cargo/bin")
+    $env.PATH = ($env.PATH | append $"($nu.home-dir)/.cargo/bin")
 }
 
 # bun
 if ($"($nu.home-dir)/.bun/bin" | path exists) {
-    let bun_path = $"($nu.home-dir)/.bun/bin"
-    let list = $env.PATH | split row (char esep)
-    $env.PATH = $list | append $bun_path
+    $env.PATH = $env.PATH | append $"($nu.home-dir)/.bun/bin"
 }
 
 # /usr/local/bin
 if ("/usr/local/bin" | path exists) {
-    let list = $env.PATH | split row (char esep)
-    $env.PATH = $list | append "/usr/local/bin"
+    $env.PATH = $env.PATH | append "/usr/local/bin"
 }
+
+# ~/.local/bin
+if ($"($nu.home-dir)/.local/bin" | path exists) {
+    $env.PATH = $env.PATH | append $"($nu.home-dir)/.local/bin"
+}
+
 
 # claude code
 if ($is_win and ('~/.local/bin' | path exists)) {
-    $env.PATH = ($env.PATH | prepend ~/.local/bin)
     let git_path = scoop-app-dir git
     if not ($git_path | is-empty) {
         $env.CLAUDE_CODE_GIT_BASH_PATH = $"($git_path)bin\\bash.exe"
