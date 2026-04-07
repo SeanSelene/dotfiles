@@ -84,6 +84,7 @@ def --env y [...args] {
     rm -fp $tmp
 }
 
+
 # 命令别名
 alias ga = git add
 alias gaa = git add --all
@@ -103,3 +104,5 @@ alias gct = git checkout
 
 alias vi = nvim
 alias lg = lazygit
+
+source ~/.zoxide.nu
