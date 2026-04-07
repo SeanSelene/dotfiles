@@ -7,13 +7,224 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "experimental.theme_overrides": {
-    "syntax": {
-      "comment": {
-        "font_style": "normal",
+  "language_models": {
+    "openai_compatible": {
+      "无问芯穹": {
+        "api_url": "https://cloud.infini-ai.com/maas/coding/v1",
+        "available_models": [
+          {
+            "name": "minimax-m2.7",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+          {
+            "name": "glm-5",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+          {
+            "name": "kimi-k2.5",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+          {
+            "name": "deepseek-v3.2",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+        ],
       },
     },
   },
+  "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            // 文件和目录查看（只读操作）
+            { "pattern": "^ls\\s+.*$" },
+            { "pattern": "^tree\\s+.*$" },
+            { "pattern": "^pwd\\s*$" },
+            { "pattern": "^cat\\s+.*$" },
+            { "pattern": "^head\\s+.*$" },
+            { "pattern": "^tail\\s+.*$" },
+            { "pattern": "^less\\s+.*$" },
+            { "pattern": "^more\\s+.*$" },
+            // 文件查找
+            { "pattern": "^find\\s+.*$" },
+            { "pattern": "^locate\\s+.*$" },
+            // 文本搜索
+            { "pattern": "^grep\\s+.*$" },
+            { "pattern": "^rg\\s+.*$" },
+            { "pattern": "^ag\\s+.*$" },
+            { "pattern": "^ack\\s+.*$" },
+            // 统计信息
+            { "pattern": "^wc\\s+.*$" },
+            { "pattern": "^du\\s+.*$" },
+            { "pattern": "^df\\s+.*$" },
+            // Git 只读操作
+            { "pattern": "^git\\s+status\\b.*$" },
+            { "pattern": "^git\\s+log\\b.*$" },
+            { "pattern": "^git\\s+diff\\b.*$" },
+            { "pattern": "^git\\s+branch\\b.*$" },
+            { "pattern": "^git\\s+show\\b.*$" },
+            { "pattern": "^git\\s+remote\\b.*$" },
+            { "pattern": "^git\\s+rev-parse\\b.*$" },
+            { "pattern": "^git\\s+config\\s+--get\\b.*$" },
+            // 系统信息
+            { "pattern": "^which\\s+.*$" },
+            { "pattern": "^whoami\\s*$" },
+            { "pattern": "^hostname\\s*$" },
+            { "pattern": "^uname\\s+.*$" },
+            { "pattern": "^echo\\s+.*$" },
+            { "pattern": "^date\\s*$" },
+            { "pattern": "^type\\s+.*$" },
+            // 安全的文件创建操作
+            { "pattern": "^mkdir\\s+.*$" },
+            { "pattern": "^touch\\s+.*$" },
+            // Rust/Cargo 命令（安全的构建、测试、检查操作）
+            { "pattern": "^cargo\\s+check\\b.*$" },
+            { "pattern": "^cargo\\s+build\\b.*$" },
+            { "pattern": "^cargo\\s+test\\b.*$" },
+            { "pattern": "^cargo\\s+clippy\\b.*$" },
+            { "pattern": "^cargo\\s+fmt\\s+--check\\b.*$" },
+            { "pattern": "^cargo\\s+doc\\b.*$" },
+            { "pattern": "^cargo\\s+metadata\\b.*$" },
+            { "pattern": "^cargo\\s+tree\\b.*$" },
+            { "pattern": "^cargo\\s+--version\\s*$" },
+            { "pattern": "^cargo\\s+-V\\s*$" },
+            { "pattern": "^rustc\\s+--version\\s*$" },
+            { "pattern": "^rustup\\s+show\\b.*$" },
+            { "pattern": "^rustup\\s+toolchain\\s+list\\s*$" },
+            // JavaScript/Node/npm/yarn/pnpm 命令（安全的构建、测试、查看操作）
+            { "pattern": "^npm\\s+run\\b.*$" },
+            { "pattern": "^npm\\s+test\\b.*$" },
+            { "pattern": "^npm\\s+build\\b.*$" },
+            { "pattern": "^npm\\s+list\\b.*$" },
+            { "pattern": "^npm\\s+ls\\b.*$" },
+            { "pattern": "^npm\\s+outdated\\b.*$" },
+            { "pattern": "^npm\\s+--version\\s*$" },
+            { "pattern": "^npm\\s+-v\\s*$" },
+            { "pattern": "^node\\s+--version\\s*$" },
+            { "pattern": "^node\\s+-v\\s*$" },
+            { "pattern": "^npx\\s+--version\\s*$" },
+            { "pattern": "^yarn\\s+--version\\s*$" },
+            { "pattern": "^yarn\\s+-v\\s*$" },
+            { "pattern": "^yarn\\s+run\\b.*$" },
+            { "pattern": "^yarn\\s+test\\b.*$" },
+            { "pattern": "^yarn\\s+build\\b.*$" },
+            { "pattern": "^yarn\\s+list\\b.*$" },
+            { "pattern": "^yarn\\s+outdated\\b.*$" },
+            { "pattern": "^pnpm\\s+--version\\s*$" },
+            { "pattern": "^pnpm\\s+-v\\s*$" },
+            { "pattern": "^pnpm\\s+run\\b.*$" },
+            { "pattern": "^pnpm\\s+test\\b.*$" },
+            { "pattern": "^pnpm\\s+build\\b.*$" },
+            { "pattern": "^pnpm\\s+list\\b.*$" },
+            { "pattern": "^pnpm\\s+outdated\\b.*$" },
+          ],
+        },
+      },
+    },
+    "default_model": {
+      "provider": "无问芯穹",
+      "model": "glm-5",
+      "enable_thinking": false,
+    },
+    "favorite_models": [],
+    "inline_assistant_model": {
+      "provider": "无问芯穹",
+      "model": "glm-5",
+      "enable_thinking": false,
+    },
+    "model_parameters": [],
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "ssh_connections": [
+    {
+      "host": "192.168.199.2",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["D:\\Code\\learn\\pyo3\\/demo"],
+        },
+        {
+          "paths": ["D:\\Work\\/Code"],
+        },
+        {
+          "paths": [
+            "D:\\Work\\Code\\aom\\develop\\Tools\\ChromeNativeMessaging_V3\\host\\/Res",
+          ],
+        },
+        {
+          "paths": ["D:\\Work\\Code\\aom\\krpalite_Plug\\Tools\\/ChromePlugV3"],
+        },
+        {
+          "paths": [
+            "D:\\Work\\Code\\aom\\krpalite_Plug\\Tools\\ChromeNativeMessaging_V3\\host\\/Res",
+          ],
+        },
+        {
+          "paths": [
+            "D:\\Work\\Code\\aom\\krpalite_Plug\\Tools\\ChromePlugV3\\/extension",
+          ],
+        },
+        {
+          "paths": [
+            "D:\\Work\\Code\\aom\\krpalite_Plug\\Tools\\ChromePlugV3\\/injection",
+          ],
+        },
+      ],
+    },
+    {
+      "host": "192.168.199.2",
+      "username": "husean",
+      "args": [],
+      "projects": [],
+    },
+    {
+      "host": "192.168.199.2",
+      "username": "husean",
+      "args": [],
+      "projects": [],
+    },
+  ],
   "use_smartcase_search": true,
   "colorize_brackets": true,
   "project_panel": {
@@ -27,6 +238,9 @@
     "JavaScript": {
       // "language_servers": ["tsgo"],
       "formatter": "prettier",
+    },
+    "Vue.js": {
+      "language_servers": ["vtsls", "vue-language-server"],
     },
   },
   "relative_line_numbers": "wrapped",

@@ -105,4 +105,8 @@ alias gct = git checkout
 alias vi = nvim
 alias lg = lazygit
 
+if (executable zed) {
+    $env.EDITOR = 'zed'
+}
+
 source ~/.zoxide.nu

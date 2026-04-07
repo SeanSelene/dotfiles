@@ -22,7 +22,8 @@
       "space e": "project_panel::ToggleFocus", // 聚焦到左侧面板
       "space f f": "file_finder::Toggle", // 查找文件
       "space space": "file_finder::Toggle", // 查找文件
-      "space s s": "outline::Toggle", // 查找 symbols
+      // "space s s": "outline::Toggle", // 查找 symbols
+      "space s s": "project_symbols::Toggle", // 查找 symbols
       "\\ f": "editor::Format", // 格式化
       "\\ r": "editor::Rename", // 重命名
     },
@@ -109,12 +110,12 @@
   },
   {
     "context": "KeymapEditor || vim_mode == normal",
-    // 在两个  pane  之间切换 (ctrl + tab)
     "bindings": {
       "space b d": "pane::CloseActiveItem", // 关闭激活的文件
       "space b l": "pane::CloseItemsToTheLeft", // 关闭左侧
       "space b r": "pane::CloseItemsToTheRight", // 关闭右侧
       "space b o": "pane::CloseOtherItems", // 关闭其他
+      // 在两个  pane  之间切换 (ctrl + tab)
       "space b b": [
         "action::Sequence",
         ["tab_switcher::Toggle", ["workspace::SendKeystrokes", "enter"]],

@@ -1,0 +1,45 @@
+repository = "git@github.com:SeanSelene/dotfiles.git"
+location = "~/dotfiles"
+editor = "zed"
+
+# nvim 配置文件
+[software.nvim]
+repo_path = "nvim"
+link_mode = "soft"
+config_path_unix = "~/.config/nvim"
+config_path_win = "{APPDATA}/nvim"
+
+[software.lazygit]
+repo_path = "lazygit"
+link_mode = "soft"
+config_path_unix = "~/.config/lazygit"
+config_path_win = "{APPDATA}/lazygit"
+config_path_mac = "{HOME}/Library/Application Support/lazygit"
+
+[software.starship]
+repo_path = "starship/starship.toml"
+link_mode = "hard"
+config_path = "~/.config/starship.toml"
+
+[software.zed]
+repo_path = "git@github.com:SeanSelene/zed-config.git"
+link_mode = "cp"
+config_path_unix = "~/.config/zed"
+config_path_win = "{APPDATA}/Zed"
+
+[software.wezterm]
+repo_path = "wezterm"
+link_mode = "soft"
+config_path = "~/.config/wezterm"
+
+[software.nushell]
+repo_path = "nushell"
+link_mode = "soft"
+config_path_unix = "~/.config/nushell"
+config_path_win = "{APPDATA}/nushell"
+
+[software.yazi]
+repo_path = "yazi"
+link_mode = "soft"
+config_path_unix = "~/.config/yazi"
+config_path_win = "{APPDATA}/yazi"
