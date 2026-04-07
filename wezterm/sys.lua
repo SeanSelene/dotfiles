@@ -12,9 +12,9 @@ local sys = {
   wsl_domains = wsl_domains,
 }
 
-if #wsl_domains > 0 then
-  sys.default_domain = wsl_domains[1].name
-end
+-- if #wsl_domains > 0 then
+--   sys.default_domain = wsl_domains[1].name
+-- end
 
 if string.match(wezterm.target_triple, "darwin") then
   sys.set_environment_variables = {
