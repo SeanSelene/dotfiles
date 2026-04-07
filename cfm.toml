@@ -17,7 +17,7 @@ link_mode = "hard"
 config_path = "~/.config/starship.toml"
 
 [zed]
-repo_path = "git@github.com:SeanSelene/zed-config.git"
+repo_path = "zed"
 link_mode = "cp"
 config_path_unix = "~/.config/zed"
 config_path_win = "{APPDATA}/Zed"
