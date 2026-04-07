@@ -104,6 +104,7 @@ alias gct = git checkout
 
 alias vi = nvim
 alias lg = lazygit
+alias cc = claude
 
 if (executable zed) {
     $env.EDITOR = 'zed'
