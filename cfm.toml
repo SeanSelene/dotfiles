@@ -1,5 +1,4 @@
 repository = "git@github.com:SeanSelene/dotfiles.git"
-location = "~/dotfiles"
 editor = "zed"
 
 # nvim 配置文件
