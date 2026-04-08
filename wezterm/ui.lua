@@ -24,7 +24,6 @@ return {
   window_background_opacity = 0.9,
   text_background_opacity = 0.95,
   status_update_interval = 1000,
-  font_size = 14,
   font = wezterm.font_with_fallback({
     "JetBrainsMono Nerd Font",
     "FiraCode Nerd Font",

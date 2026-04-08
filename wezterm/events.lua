@@ -8,9 +8,18 @@ wezterm.on("gui-startup", function(cmd)
   if wezterm.target_triple:find("linux") then
     wezterm.sleep_ms(100)
   end
-  window:gui_window():maximize()
-end)
+  local gui_win = window:gui_window()
+  gui_win:maximize()
 
+  -- 根据 DPI 调整字体大小
+  local screens = wezterm.gui.screens()
+  local dpi = screens.active and screens.active.effective_dpi or 96
+  local base_font_size = 12.0
+  local base_dpi = 96.0
+  local scaled_font_size = base_font_size * (dpi / base_dpi)
+  wezterm.log_info("DPI: " .. dpi .. ", scaled font size: " .. scaled_font_size)
+  gui_win:set_config_overrides({ font_size = scaled_font_size })
+end)
 
 wezterm.on("update-right-status", function(window)
   local date = wezterm.strftime("%Y-%m-%d %H:%M:%S")
