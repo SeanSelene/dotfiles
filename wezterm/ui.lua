@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local utils = require("utils")
 
 return {
   window_decorations = "RESIZE",
@@ -21,6 +22,7 @@ return {
     saturation = 0.9,
     brightness = 0.8,
   },
+  font_size = utils.get_os() == "macos" and 18.0 or 14.0,
   window_background_opacity = 0.9,
   text_background_opacity = 0.95,
   status_update_interval = 1000,

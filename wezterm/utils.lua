@@ -1,3 +1,5 @@
+local wezterm = require("wezterm")
+
 local M = {}
 
 function M.get_git_shell_path()
@@ -17,6 +19,17 @@ function M.win_executable(cmd)
     return s ~= ""
   end
   return false
+end
+
+function M.get_os()
+  local target = wezterm.target_triple
+  if target:find("windows") then
+    return "windows"
+  elseif target:find("apple") then
+    return "macos"
+  else
+    return "linux"
+  end
 end
 
 return M
