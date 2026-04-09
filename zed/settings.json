@@ -9,6 +9,24 @@
 {
   "language_models": {
     "openai_compatible": {
+      "智谱": {
+        "api_url": "https://open.bigmodel.cn/api/coding/paas/v4",
+        "available_models": [
+          {
+            "name": "glm-5.1",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+        ],
+      },
       "无问芯穹": {
         "api_url": "https://cloud.infini-ai.com/maas/coding/v1",
         "available_models": [
