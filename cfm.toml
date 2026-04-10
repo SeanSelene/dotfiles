@@ -1,41 +1,41 @@
 [nvim]
-repo_path = "nvim"
+src_path = "nvim"
 link_mode = "soft"
-config_path_unix = "~/.config/nvim"
-config_path_win = "$APPDATA/nvim"
+dest_path_unix = "~/.config/nvim"
+dest_path_win = "$APPDATA/nvim"
 
 [lazygit]
-repo_path = "lazygit"
+src_path = "lazygit"
 link_mode = "soft"
-config_path_unix = "~/.config/lazygit"
-config_path_win = "$APPDATA/lazygit"
-config_path_mac = "$HOME/Library/Application Support/lazygit"
+dest_path_unix = "~/.config/lazygit"
+dest_path_win = "$APPDATA/lazygit"
+dest_path_mac = "$HOME/Library/Application Support/lazygit"
 
 [starship]
-repo_path = "starship/starship.toml"
+src_path = "starship/starship.toml"
 link_mode = "hard"
-config_path = "~/.config/starship.toml"
+dest_path = "~/.config/starship.toml"
 
 [zed]
-repo_path = "zed"
+src_path = "zed"
 link_mode = "cp"
-config_path_unix = "~/.config/zed"
-config_path_win = "$APPDATA/Zed"
+dest_path_unix = "~/.config/zed"
+dest_path_win = "$APPDATA/Zed"
 
 [wezterm]
-repo_path = "wezterm"
+src_path = "wezterm"
 link_mode = "soft"
-config_path = "~/.config/wezterm"
+dest_path = "~/.config/wezterm"
 
 [nushell]
-repo_path = "nushell"
+src_path = "nushell"
 link_mode = "soft"
-config_path_unix = "~/.config/nushell"
-config_path_win = "$APPDATA/nushell"
-config_path_mac = "$HOME/Library/Application Support/nushell"
+dest_path_unix = "~/.config/nushell"
+dest_path_win = "$APPDATA/nushell"
+dest_path_mac = "$HOME/Library/Application Support/nushell"
 
 [yazi]
-repo_path = "yazi"
+src_path = "yazi"
 link_mode = "soft"
-config_path_unix = "~/.config/yazi"
-config_path_win = "$APPDATA/yazi"
+dest_path_unix = "~/.config/yazi"
+dest_path_win = "$APPDATA/yazi"
