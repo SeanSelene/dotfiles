@@ -8,7 +8,7 @@ dest_path_win = "$APPDATA/nvim"
 src_path = "lazygit"
 link_mode = "soft"
 dest_path_unix = "~/.config/lazygit"
-dest_path_win = "$APPDATA/lazygit"
+dest_path_win = "$LOCALAPPDATA/lazygit"
 dest_path_mac = "$HOME/Library/Application Support/lazygit"
 
 [starship]
