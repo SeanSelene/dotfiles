@@ -3,15 +3,17 @@ def executable [cmd: string] {
 }
 
 def scoop-app-dir [app: string]: nothing -> string {
-    let app_list = which $app
-    if not ($app_list | is-empty) {
-        let app_path = $app_list.0.path
-        if $app_path =~ "shims" {
-            $app_path | str replace -r "shims.*$" $"apps\\($app)\\current\\"
-        } else {
-            ""
-        }
+    let scoop_path = which scoop
+    if ($scoop_path | is-empty) {
+        error make $"Could not find scoop"
     }
+    let scoop_root = $scoop_path | get path.0 | str replace -r '\\shims\\.*$' ''
+    let app_dir = $scoop_root | path join apps $app current
+    if not ($app_dir | path exists) {
+        error make $"Could not find ($app)"
+    }
+    $app_dir
+
 }
 
 let host_name = (sys host).name
@@ -34,33 +36,28 @@ if (executable fnm) {
     $env.FNM_NODE_DIST_MIRROR = "https://mirrors.ustc.edu.cn/node/"
 }
 
+def add-to-path [bin: string] {
+    let bin = $bin | path expand
+    # 检查路径是否存在，且当前 PATH 中是否尚未包含该路径
+    if ($bin | path exists) and ($bin not-in $env.PATH) {
+        $env.PATH = ($env.PATH | append $bin)
+    }
+}
 
 # rust
-if ($"($nu.home-dir)/.cargo/bin" not-in ($env.PATH | split row (char esep))) {
-    $env.PATH = ($env.PATH | append $"($nu.home-dir)/.cargo/bin")
-}
-
+add-to-path ~/.cargo/bin
 # bun
-if ($"($nu.home-dir)/.bun/bin" | path exists) {
-    $env.PATH = $env.PATH | append $"($nu.home-dir)/.bun/bin"
-}
+add-to-path ~/.bun/bin
 
-# /usr/local/bin
-if ("/usr/local/bin" | path exists) {
-    $env.PATH = $env.PATH | append "/usr/local/bin"
-}
-
-# ~/.local/bin
-if ($"($nu.home-dir)/.local/bin" | path exists) {
-    $env.PATH = $env.PATH | append $"($nu.home-dir)/.local/bin"
-}
+add-to-path /usr/local/bin
+add-to-path ~/.local/bin
 
 
 # claude code
-if ($is_win and ('~/.local/bin' | path exists)) {
-    let git_path = scoop-app-dir git
-    if not ($git_path | is-empty) {
-        $env.CLAUDE_CODE_GIT_BASH_PATH = $"($git_path)bin\\bash.exe"
+if ($is_win and (executable claude)) {
+    try {
+        let git_path = scoop-app-dir git
+        $env.CLAUDE_CODE_GIT_BASH_PATH = $git_path | path join "bin" "bash.exe"
     }
 }
 
@@ -73,9 +70,9 @@ if (executable starship) {
 
 # yazi
 if $is_win and (executable yazi) {
-    let git_path = scoop-app-dir git
-    if not ($git_path | is-empty) {
-        $env.YAZI_FILE_ONE = $"($git_path)usr\\bin\\file.exe"
+    try {
+        let git_path = scoop-app-dir git
+        $env.YAZI_FILE_ONE = $git_path | path join "usr" "bin" "file.exe"
     }
 }
 
