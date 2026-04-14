@@ -32,7 +32,7 @@ if (executable fnm) {
     }
     $env.FNM_NODE_DIST_MIRROR = "https://mirrors.ustc.edu.cn/node/"
 }
-def add-to-path [bin: string] {
+def --env add-to-path [bin: string] {
     let bin = $bin | path expand
     # 检查路径是否存在，且当前 PATH 中是否尚未包含该路径
     if ($bin | path exists) and ($bin not-in $env.PATH) {
