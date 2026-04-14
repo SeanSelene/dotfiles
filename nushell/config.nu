@@ -20,7 +20,7 @@ $env.config = {
 }
 
 # starship 提示符
-if (executable starship) {
+if ((executable starship) and ("~/.cache/starship/init.nu" | path expand | path exists)) {
     use ~/.cache/starship/init.nu
 }
 

@@ -21,9 +21,6 @@ let is_linux = $host_name =~ "Linux"
 let is_wsl = $is_linux and ((sys host).kernel_version =~ "WSL")
 let is_win = $host_name =~ "Windows"
 
-# convenient to judge whether a program is launched by nu
-$env.IS_NU = "1"
-
 # fnm
 if (executable fnm) {
     fnm env --json | from json | load-env
@@ -35,7 +32,6 @@ if (executable fnm) {
     }
     $env.FNM_NODE_DIST_MIRROR = "https://mirrors.ustc.edu.cn/node/"
 }
-
 def add-to-path [bin: string] {
     let bin = $bin | path expand
     # 检查路径是否存在，且当前 PATH 中是否尚未包含该路径
@@ -52,7 +48,6 @@ add-to-path ~/.bun/bin
 add-to-path /usr/local/bin
 add-to-path ~/.local/bin
 
-
 # claude code
 if ($is_win and (executable claude)) {
     try {
@@ -61,12 +56,18 @@ if ($is_win and (executable claude)) {
     }
 }
 
-
-# starship
-if (executable starship) {
-    mkdir ~/.cache/starship
-    starship init nu | save -f ~/.cache/starship/init.nu
+def setup-apps [] {
+    if (executable zoxide) {
+        zoxide init nushell | save -f ~/.zoxide.nu
+    }
+    # starship
+    if (executable starship) {
+        mkdir ~/.cache/starship
+        starship init nu | save -f ~/.cache/starship/init.nu
+    }
 }
+
+
 
 # yazi
 if $is_win and (executable yazi) {
@@ -76,8 +77,4 @@ if $is_win and (executable yazi) {
     }
 }
 
-if (executable zoxide) {
-    zoxide init nushell | save -f ~/.zoxide.nu
-} else if not (~/.zoxide.nu | path exists) {
-    touch ~/.zoxide.nu
-}
+touch ~/.zoxide.nu
