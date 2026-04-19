@@ -19,12 +19,8 @@ $env.config = {
     }
 }
 
-# starship 提示符
-if ((executable starship) and ("~/.cache/starship/init.nu" | path expand | path exists)) {
-    use ~/.cache/starship/init.nu
-}
 
-# 开关代理
+# ==================== network proxy ====================
 def get_proxy_addr [] {
     if $is_wsl {ip route show | grep -i default | awk '{ print $3}'} else {"127.0.0.1"}
 }
@@ -38,7 +34,7 @@ def --env pon [port = "7897", addr?:string] {
     git config --global http.proxy $h_proxy
     git config --global https.proxy $h_proxy
     npm config set proxy $h_proxy
-    echo $"proxy set to: ($addr): ($port)"
+    echo $"proxy set to: ($addr):($port)"
 }
 def --env poff [] {
     if "http_proxy" in $env {
@@ -56,7 +52,8 @@ def --env poff [] {
     echo "proxy disabled"
 }
 
-# open specific dir in neovide
+# ==================== 编辑器相关 ====================
+
 def gvi [
     path?: string, # path to open
     --wsl (-w) # open dir in wsl
@@ -73,7 +70,8 @@ def gvi [
     }
 }
 
-# A wrapper for Yazi to provide the ability to change the cwd.
+# ==================== 文件管理相关 ====================
+
 def --env y [...args] {
     let tmp = (mktemp -t "yazi-cwd.XXXXXX")
     yazi ...$args --cwd-file $tmp
@@ -84,8 +82,8 @@ def --env y [...args] {
     rm -fp $tmp
 }
 
-
-# 命令别名
+# ==================== aliases ====================
+# git add
 alias ga = git add
 alias gaa = git add --all
 alias ga. = git add .
@@ -106,8 +104,12 @@ alias vi = nvim
 alias lg = lazygit
 alias cc = claude
 
+# ==================== tools ====================
 if (executable zed) {
-    $env.EDITOR = 'zed'
+    $env.EDITOR = 'zed' # zed cli
 }
-
-source ~/.zoxide.nu
+# starship
+if ((executable starship) and ("~/.cache/starship/init.nu" | path expand | path exists)) {
+    use ~/.cache/starship/init.nu
+}
+source ~/.zoxide.nu # zoxide: z zi
