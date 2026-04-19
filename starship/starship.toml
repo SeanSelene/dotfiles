@@ -6,8 +6,8 @@ command_timeout = 1000
 [os]
 disabled = false
 [os.symbols]
-Windows ="[ ](#5f9aeb)" 
-Arch ="[ ](bold #4591cc)" 
+Windows ="[ ](#5f9aeb)"
+Arch ="[ ](bold #4591cc)"
 Macos = "[󰇄 ](bold #cc63ff)"
 
 [package]
@@ -27,3 +27,6 @@ format = "[$symbol($version )]($style)"
 format = "[$symbol($version )]($style)"
 detect_extensions = []
 
+[cmd_duration]
+min_time = 0
+show_milliseconds = true
