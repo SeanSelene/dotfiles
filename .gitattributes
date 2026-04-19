@@ -1,0 +1,13 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Default to LF line endings for all text files
+* text eol=lf
+
+# Windows batch files should use CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Windows specific files
+*.ps1 text eol=crlf
+*.vbs text eol=crlf
