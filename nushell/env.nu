@@ -79,7 +79,11 @@ if $is_win {
 # fnm
 if (executable fnm) {
     fnm env --json | from json | load-env
-    $env.PATH = $env.PATH | prepend $env.FNM_MULTISHELL_PATH
+    mut fnm_bin = $env.FNM_MULTISHELL_PATH
+    if not $is_win {
+       $fnm_bin = $fnm_bin | path join bin
+    }
+    $env.PATH = $env.PATH | prepend $fnm_bin
     $env.FNM_NODE_DIST_MIRROR = "https://mirrors.ustc.edu.cn/node/"
 }
 
