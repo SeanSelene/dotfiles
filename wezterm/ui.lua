@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local utils = require("utils")
 
 return {
-  window_decorations = "RESIZE",
+  window_decorations = os.getenv("NIRI_SOCKET") and "NONE" or "RESIZE",
   -- window_close_confirmation = "NeverPrompt",
   -- color_scheme = "One Dark (Gogh)",
   color_scheme = "Tokyo Night",

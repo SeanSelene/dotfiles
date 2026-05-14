@@ -5,9 +5,11 @@ local mux = wezterm.mux
 
 wezterm.on("gui-startup", function(cmd)
   local _, _, window = mux.spawn_window(cmd or {})
-  wezterm.sleep_ms(100)
-  local gui_win = window:gui_window()
-  gui_win:maximize()
+  if not os.getenv("NIRI_SOCKET") then
+    wezterm.sleep_ms(100)
+    local gui_win = window:gui_window()
+    gui_win:maximize()
+  end
 end)
 
 wezterm.on("update-right-status", function(window)
