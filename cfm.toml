@@ -8,7 +8,7 @@ dest_path_win = "$APPDATA/nvim"
 [[apps]]
 name = "zed"
 src_path = "zed"
-link_mode = "cp"
+link_mode = "soft"
 dest_path_unix = "~/.config/zed"
 dest_path_win = "$APPDATA/Zed"
 
