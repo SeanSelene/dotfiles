@@ -83,23 +83,6 @@ def --env y [...args] {
 }
 
 # ==================== aliases ====================
-# git add
-alias ga = git add
-alias gaa = git add --all
-alias ga. = git add .
-# git commit
-alias gc = git commit
-alias gcm = git commit --message
-# git status
-alias gs = git status
-alias gss = git status --short
-# git stash
-alias gsh = git stash
-alias gshu = git stash --include-untracked
-alias gshi = git stash --keep-index
-# git checkout
-alias gct = git checkout
-
 alias vi = nvim
 alias lg = lazygit
 alias cc = claude
