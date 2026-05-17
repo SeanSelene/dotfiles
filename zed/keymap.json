@@ -10,7 +10,7 @@
     "context": "ProjectPanel && not_editing",
     "bindings": {
       "a": "project_panel::NewFile", // 新建文件
-      "space e": "workspace::ToggleLeftDock", // 显示/隐藏左侧
+      "space e": "project_panel::Toggle", // 显示/隐藏左侧
       "r": "project_panel::Rename", // 更改名字
       "l": "project_panel::OpenPermanent", // 展开收缩文件夹 or 打开文件
     },
@@ -19,10 +19,9 @@
   {
     "context": "vim_mode == normal",
     "bindings": {
-      "space e": "project_panel::ToggleFocus", // 聚焦到左侧面板
+      "space e": "pane::RevealInProjectPanel", // 聚焦到左侧面板
       "space f f": "file_finder::Toggle", // 查找文件
       "space space": "file_finder::Toggle", // 查找文件
-      // "space s s": "outline::Toggle", // 查找 symbols
       "space s s": "project_symbols::Toggle", // 查找 symbols
       "\\ f": "editor::Format", // 格式化
       "\\ r": "editor::Rename", // 重命名
@@ -135,6 +134,7 @@
     "bindings": {
       "/": ["vim::Search", { "regex": false }],
       "space q q": "workspace::CloseWindow",
+      "ctrl-j": "workspace::ToggleBottomDock",
     },
   },
   // ============ ⌨️: vim 模式下的快捷键 end==============
