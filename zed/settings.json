@@ -62,6 +62,19 @@
             },
           },
           {
+            "name": "glm-5.1",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+          {
             "name": "kimi-k2.5",
             "max_tokens": 200000,
             "max_output_tokens": 32000,
@@ -184,13 +197,13 @@
     },
     "default_model": {
       "provider": "无问芯穹",
-      "model": "glm-5",
+      "model": "glm-5.1",
       "enable_thinking": false,
     },
     "favorite_models": [],
     "inline_assistant_model": {
       "provider": "无问芯穹",
-      "model": "glm-5",
+      "model": "glm-5.1",
       "enable_thinking": false,
     },
     "model_parameters": [],
