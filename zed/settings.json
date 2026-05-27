@@ -32,76 +32,6 @@
           },
         ],
       },
-      "无问芯穹": {
-        "api_url": "https://cloud.infini-ai.com/maas/coding/v1",
-        "available_models": [
-          {
-            "name": "minimax-m2.7",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
-            "capabilities": {
-              "tools": true,
-              "images": false,
-              "parallel_tool_calls": true,
-              "prompt_cache_key": false,
-              "chat_completions": true,
-            },
-          },
-          {
-            "name": "glm-5",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
-            "capabilities": {
-              "tools": true,
-              "images": false,
-              "parallel_tool_calls": true,
-              "prompt_cache_key": false,
-              "chat_completions": true,
-            },
-          },
-          {
-            "name": "glm-5.1",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
-            "capabilities": {
-              "tools": true,
-              "images": false,
-              "parallel_tool_calls": true,
-              "prompt_cache_key": false,
-              "chat_completions": true,
-            },
-          },
-          {
-            "name": "kimi-k2.5",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
-            "capabilities": {
-              "tools": true,
-              "images": false,
-              "parallel_tool_calls": true,
-              "prompt_cache_key": false,
-              "chat_completions": true,
-            },
-          },
-          {
-            "name": "deepseek-v3.2",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
-            "capabilities": {
-              "tools": true,
-              "images": false,
-              "parallel_tool_calls": false,
-              "prompt_cache_key": false,
-              "chat_completions": true,
-            },
-          },
-        ],
-      },
     },
   },
   "agent": {
@@ -196,13 +126,13 @@
       },
     },
     "default_model": {
-      "provider": "无问芯穹",
+      "provider": "智谱",
       "model": "glm-5.1",
       "enable_thinking": false,
     },
     "favorite_models": [],
     "inline_assistant_model": {
-      "provider": "无问芯穹",
+      "provider": "智谱",
       "model": "glm-5.1",
       "enable_thinking": false,
     },
@@ -219,17 +149,6 @@
     "hide_hidden": false,
   },
   "languages": {
-    "TypeScript": {
-      // "language_servers": ["tsgo"],
-      "formatter": "prettier",
-    },
-    "JavaScript": {
-      // "language_servers": ["tsgo"],
-      "formatter": "prettier",
-    },
-    "Vue.js": {
-      "language_servers": ["vtsls", "vue-language-server"],
-    },
     "Lua": {
       "format_on_save": "on",
       "formatter": {

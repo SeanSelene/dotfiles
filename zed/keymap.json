@@ -25,6 +25,8 @@
       "space s s": "project_symbols::Toggle", // 查找 symbols
       "\\ f": "editor::Format", // 格式化
       "\\ r": "editor::Rename", // 重命名
+      "g z": "vim::HelixJumpToWord",
+      ", w": "vim::HelixJumpToWord",
     },
   },
   // visual 模式
