@@ -35,9 +35,13 @@
     },
   },
   "agent": {
+    "sidebar_side": "right",
     "dock": "right",
     "tool_permissions": {
       "tools": {
+        "fetch": {
+          "always_allow": [{ "pattern": ".*" }],
+        },
         "terminal": {
           "always_allow": [
             // 文件和目录查看（只读操作）
@@ -126,14 +130,15 @@
       },
     },
     "default_model": {
-      "provider": "智谱",
-      "model": "glm-5.1",
-      "enable_thinking": false,
+      "effort": "high",
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "enable_thinking": true,
     },
     "favorite_models": [],
     "inline_assistant_model": {
-      "provider": "智谱",
-      "model": "glm-5.1",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
       "enable_thinking": false,
     },
     "model_parameters": [],
