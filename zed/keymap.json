@@ -74,18 +74,6 @@
     },
   },
   {
-    "context": "os==macos && vim_mode == insert",
-    "bindings": {
-      "escape": [
-        "action::Sequence",
-        [
-          "vim::NormalBefore",
-          ["task::Spawn", { "task_name": "switch keylayout to us(mac)" }],
-        ],
-      ],
-    },
-  },
-  {
     "context": "os==linux && vim_mode == insert",
     "bindings": {
       "escape": [
@@ -93,18 +81,6 @@
         [
           "vim::NormalBefore",
           ["task::Spawn", { "task_name": "switch keylayout to us(linux)" }],
-        ],
-      ],
-    },
-  },
-  {
-    "context": "os==windows && vim_mode == insert",
-    "bindings": {
-      "escape": [
-        "action::Sequence",
-        [
-          ["task::Spawn", { "task_name": "switch keylayout to us(win)" }],
-          "vim::NormalBefore",
         ],
       ],
     },
