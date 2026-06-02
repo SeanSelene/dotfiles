@@ -154,6 +154,30 @@
     "hide_hidden": false,
   },
   "languages": {
+    "TypeScript": {
+      "language_servers": [
+        "...",
+        "tsgo",
+        "!vtsls",
+        "!typescript-language-server",
+      ],
+    },
+    "TSX": {
+      "language_servers": [
+        "...",
+        "tsgo",
+        "!vtsls",
+        "!typescript-language-server",
+      ],
+    },
+    "JavaScript": {
+      "language_servers": [
+        "...",
+        "tsgo",
+        "!vtsls",
+        "!typescript-language-server",
+      ],
+    },
     "Lua": {
       "format_on_save": "on",
       "formatter": {
