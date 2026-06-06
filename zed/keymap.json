@@ -125,8 +125,13 @@
   },
   {
     "context": "Editor && showing_completions",
+    "bindings": { "ctrl-y": "editor::ConfirmCompletionInsert" },
+  },
+  // workspace
+  {
+    "context": "Editor || Workspace",
     "bindings": {
-      "ctrl-y": "editor::ConfirmCompletionInsert",
+      "ctrl-shift-j": ["task::Spawn", { "task_name": "external terminal" }],
     },
   },
 ]

@@ -27,4 +27,10 @@
     "hide": "on_success",
     "command": "fcitx5-remote -s keyboard-us",
   },
+  {
+    "label": "external terminal",
+    "command": "alacritty",
+    "reveal": "never",
+    "hide": "on_success",
+  },
 ]
