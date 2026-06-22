@@ -18,10 +18,10 @@
         "api_url": "https://open.bigmodel.cn/api/coding/paas/v4",
         "available_models": [
           {
-            "name": "glm-5.1",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "name": "glm-5.2",
+            "max_tokens": 1000000,
+            "max_output_tokens": 131072,
+            "max_completion_tokens": 131072,
             "capabilities": {
               "tools": true,
               "images": false,
@@ -35,6 +35,7 @@
     },
   },
   "agent": {
+    "default_profile": "write",
     "sidebar_side": "right",
     "dock": "right",
     "tool_permissions": {
@@ -130,10 +131,9 @@
       },
     },
     "default_model": {
-      "effort": "high",
-      "provider": "deepseek",
-      "model": "deepseek-v4-pro",
-      "enable_thinking": true,
+      "provider": "智谱",
+      "model": "glm-5.2",
+      "enable_thinking": false,
     },
     "favorite_models": [],
     "inline_assistant_model": {
@@ -205,5 +205,10 @@
     "mode": "dark",
     "light": "Catppuccin Mocha",
     "dark": "Catppuccin Mocha",
+  },
+  "status_bar": {
+    "active_encoding_button": "enabled",
+    "cursor_position_button": true,
+    "line_endings_button": true,
   },
 }
