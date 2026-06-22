@@ -37,12 +37,13 @@ def setup-apps [] {
 }
 
 # =====================
-# environment dectection
+# environment detection
 # =====================
 
-let host_name = (sys host).name
+let sys_host = sys host
+let host_name = $sys_host.name
 let is_linux = $host_name =~ "Linux"
-let is_wsl = $is_linux and ((sys host).kernel_version =~ "WSL")
+let is_wsl = $is_linux and ($sys_host.kernel_version =~ "WSL")
 let is_win = $host_name =~ "Windows"
 
 

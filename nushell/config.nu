@@ -8,7 +8,7 @@ $env.config = {
         env_change: {
             PWD: [
                 {
-                    if ((executable fnm) and ([.nvmrc .node-version package.json] | path exists | any {|i| $i})) {
+                    if (([.nvmrc .node-version package.json] | path exists | any {|i| $i}) and (executable fnm)) {
                         try {
                             fnm use --silent-if-unchanged
                         }
