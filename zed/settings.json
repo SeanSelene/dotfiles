@@ -153,6 +153,21 @@
   "project_panel": {
     "hide_hidden": false,
   },
+  "inlay_hints": {
+    "enabled": true,
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "inlayHints": {
+          "closingBraceHints": {
+            "enable": true,
+            "minLines": 5,
+          },
+        },
+      },
+    },
+  },
   "languages": {
     "TypeScript": {
       "language_servers": [
