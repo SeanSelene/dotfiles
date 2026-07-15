@@ -153,9 +153,6 @@
   "project_panel": {
     "hide_hidden": false,
   },
-  "inlay_hints": {
-    "enabled": true,
-  },
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
@@ -169,6 +166,11 @@
     },
   },
   "languages": {
+    "Rust": {
+      "inlay_hints": {
+        "enabled": true,
+      },
+    },
     "TypeScript": {
       "language_servers": [
         "...",
